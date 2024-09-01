@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using SalesWebMvc1.Services;
 using SalesWebMvc1.Data;
 
 namespace SalesWebMvc1
@@ -41,6 +42,7 @@ namespace SalesWebMvc1
                     builder.MigrationsAssembly("SalesWebMvc1")));
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
         
         }
 
