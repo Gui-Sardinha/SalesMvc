@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMvc1.Services;
 using SalesWebMvc1.Data;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace SalesWebMvc1
 {
@@ -52,6 +54,17 @@ namespace SalesWebMvc1
         {
             if (env.IsDevelopment())
             {
+
+                var enUS = new CultureInfo("en-US");
+                var localizationOptions = new RequestLocalizationOptions
+                {
+                    DefaultRequestCulture = new RequestCulture(enUS),
+                    SupportedCultures = new List<CultureInfo> { enUS },
+                    SupportedUICultures = new List<CultureInfo> { enUS }
+                };
+
+                app.UseRequestLocalization(localizationOptions);
+
                 app.UseDeveloperExceptionPage();
                 seedingService.Seed();
             }
